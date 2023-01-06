@@ -22,11 +22,15 @@ def read_images_to_array(folder):
     images_label = []
     images_mask = []
     for filename in filenames:
-        image_dict = read_image(folder, filename)
-        images_pid.append(''.join(image_dict['PID'].astype(str).tolist()[0])) # converts pid from array to single string
-        images_image.append(image_dict['image'])
-        images_label.append(image_dict['label'].astype(int)[0][0]) # extracts label from array to single integer
-        images_mask.append(image_dict['mask'])
+        try:
+            image_dict = read_image(folder, filename)
+            assert image_dict['image'].shape == (512, 512)
+            images_pid.append(''.join(image_dict['PID'].astype(str).tolist()[0])) # converts pid from array to single string
+            images_image.append(image_dict['image'])
+            images_label.append(image_dict['label'].astype(int)[0][0]) # extracts label from array to single integer
+            images_mask.append(image_dict['mask'])
+        except:
+            print(filename)
     images_pid = np.array(images_pid)
     images_image = np.array(images_image)
     images_label = np.array(images_label)
