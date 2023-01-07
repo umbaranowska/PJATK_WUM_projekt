@@ -27,7 +27,7 @@ def read_images_to_array(folder):
             assert image_dict['image'].shape == (512, 512)
             images_pid.append(''.join(image_dict['PID'].astype(str).tolist()[0])) # converts pid from array to single string
             images_image.append(image_dict['image'])
-            images_label.append(image_dict['label'].astype(int)[0][0]) # extracts label from array to single integer
+            images_label.append(image_dict['label'].astype(int)[0][0] - 1) # extracts label from array to single integer AND substracts 1 so labels are 0-2 now
             images_mask.append(image_dict['mask'])
         except:
             print(filename)
@@ -39,9 +39,9 @@ def read_images_to_array(folder):
 
 def convert_labels_to_strings(images_label):
     label_dict = {
-        1 : 'meningioma',
-        2 : 'glioma',
-        3 : 'pituitary tumor'
+        0 : 'meningioma',
+        1 : 'glioma',
+        2 : 'pituitary tumor'
     }
     images_label_string = np.array([label_dict[i] for i in images_label])
     return images_label_string
