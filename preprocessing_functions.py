@@ -46,8 +46,9 @@ def convert_labels_to_strings(images_label):
     images_label_string = np.array([label_dict[i] for i in images_label])
     return images_label_string
 
-def plot_image(id, images_pid, images_image, images_label_string, images_mask):
+def plot_image(id, images_pid, images_image, images_label_string, images_mask, show_mask = True):
     plt.imshow(images_image[id], cmap = 'gray')
-    plt.imshow(images_mask[id], cmap = 'Reds', alpha = 0.3)
+    if show_mask:
+        plt.imshow(images_mask[id], cmap = 'Reds', alpha = 0.3)
     plt.title(f'image {id}, patient ID: {images_pid[id]}, tumor type: {images_label_string[id]}')
     plt.show()
