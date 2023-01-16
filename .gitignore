@@ -11,3 +11,4 @@ test.ipynb
 *.xlsx
 *.Rproj
 \plots
+*.csv
