@@ -3,3 +3,5 @@
 \data
 test.ipynb
 *.pyc
+\models
+\incorrect_predictions
