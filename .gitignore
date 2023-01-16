@@ -5,3 +5,9 @@ test.ipynb
 *.pyc
 \models
 \incorrect_predictions
+.Rproj.user
+.Rdata
+.Rhistory
+*.xlsx
+*.Rproj
+\plots
